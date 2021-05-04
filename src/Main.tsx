@@ -1,3 +1,4 @@
+import {parseToRgb} from 'polished';
 import React from 'react';
 import {AbsoluteFill, Sequence} from 'remotion';
 import {Big} from './Big';
@@ -10,6 +11,33 @@ export const Main: React.FC<{
 	color: string;
 	name: string;
 }> = ({color, name}) => {
+	const isValid = (() => {
+		try {
+			parseToRgb(color);
+			return true;
+		} catch (err) {
+			return false;
+		}
+	})();
+	if (isValid === false) {
+		return (
+			<AbsoluteFill
+				style={{
+					justifyContent: 'center',
+					alignItems: 'center',
+					display: 'flex',
+					flex: 1,
+					backgroundColor: 'white',
+					fontWeight: 'bold',
+					textAlign: 'center',
+				}}
+			>
+				<div style={{fontFamily: 'sans-serif', fontSize: 40}}>
+					Please pass a valid <br /> hex color code like #ffaa00
+				</div>
+			</AbsoluteFill>
+		);
+	}
 	return (
 		<AbsoluteFill>
 			<Sequence from={0} durationInFrames={120}>

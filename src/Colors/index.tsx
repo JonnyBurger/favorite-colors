@@ -1,3 +1,4 @@
+import {parseToRgb} from 'polished';
 import React from 'react';
 import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 
@@ -32,10 +33,7 @@ export const Colors: React.FC<{
 }> = ({color}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
-	const trimmed = color.replace('#', '').trim();
-	const r = parseInt(trimmed.slice(0, 2), 16);
-	const g = parseInt(trimmed.slice(2, 4), 16);
-	const b = parseInt(trimmed.slice(4, 6), 16);
+	const parsed = parseToRgb(color);
 
 	const progress = spring({
 		fps,
@@ -59,7 +57,7 @@ export const Colors: React.FC<{
 			}}
 		>
 			<div style={row}>
-				{[r, g, b].map((color, index) => {
+				{[parsed.red, parsed.green, parsed.blue].map((color, index) => {
 					const barProgress = spring({
 						fps,
 						frame: frame - index * 10,

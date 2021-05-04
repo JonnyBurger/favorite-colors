@@ -49,7 +49,7 @@ export const RemotionVideo: React.FC = () => {
 				height={720}
 				defaultProps={{
 					name: 'Jonny',
-					color: '#30336b',
+					color: '#3033ba',
 				}}
 			/>
 		</>
