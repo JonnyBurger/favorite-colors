@@ -7,7 +7,6 @@ import {
 	useVideoConfig,
 } from 'remotion';
 import styled from 'styled-components';
-import {SELECTED_COLOR} from './constants';
 import {getReadableColor} from './readable-color';
 
 const Container = styled(AbsoluteFill)`
@@ -16,7 +15,9 @@ const Container = styled(AbsoluteFill)`
 	font-weight: bold;
 `;
 
-export const Big: React.FC = () => {
+export const Big: React.FC<{
+	color: string;
+}> = ({color}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 	const progress = spring({
@@ -33,7 +34,7 @@ export const Big: React.FC = () => {
 				justifyContent: 'center',
 				alignItems: 'center',
 				flex: 1,
-				color: getReadableColor(SELECTED_COLOR),
+				color: getReadableColor(color),
 				fontSize: 150,
 			}}
 		>
@@ -47,7 +48,7 @@ export const Big: React.FC = () => {
 					)}px)`,
 				}}
 			>
-				{SELECTED_COLOR}
+				{color}
 			</span>
 		</Container>
 	);

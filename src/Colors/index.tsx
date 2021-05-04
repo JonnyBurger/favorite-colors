@@ -1,7 +1,6 @@
 import React from 'react';
 import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import styled from 'styled-components';
-import {SELECTED_COLOR} from '../constants';
 
 const Container = styled.div`
 	display: flex;
@@ -28,10 +27,12 @@ const Bar = styled.div`
 
 const rgb = ['#ff7979', '#badc58', '#3498db'];
 
-export const Colors: React.FC = () => {
+export const Colors: React.FC<{
+	color: string;
+}> = ({color}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
-	const trimmed = SELECTED_COLOR.replace('#', '').trim();
+	const trimmed = color.replace('#', '').trim();
 	const r = parseInt(trimmed.slice(0, 2), 16);
 	const g = parseInt(trimmed.slice(2, 4), 16);
 	const b = parseInt(trimmed.slice(4, 6), 16);

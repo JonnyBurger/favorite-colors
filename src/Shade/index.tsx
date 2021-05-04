@@ -2,7 +2,6 @@ import namer from 'color-namer';
 import React from 'react';
 import {spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import styled from 'styled-components';
-import {SELECTED_COLOR} from '../constants';
 import {getReadableColor} from '../readable-color';
 
 const Container = styled.div`
@@ -16,8 +15,10 @@ const Container = styled.div`
 	line-height: 1.1;
 `;
 
-export const Shade: React.FC = () => {
-	const names = namer(SELECTED_COLOR);
+export const Shade: React.FC<{
+	color: string;
+}> = ({color}) => {
+	const names = namer(color);
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 	const progress = spring({
@@ -30,9 +31,9 @@ export const Shade: React.FC = () => {
 	return (
 		<Container
 			style={{
-				backgroundColor: getReadableColor(SELECTED_COLOR),
+				backgroundColor: getReadableColor(color),
 				flex: 1,
-				color: SELECTED_COLOR,
+				color,
 			}}
 		>
 			<div

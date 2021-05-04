@@ -2,7 +2,6 @@ import {shade, tint} from 'polished';
 import React from 'react';
 import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import styled from 'styled-components';
-import {SELECTED_COLOR} from '../constants';
 import {getReadableColor} from '../readable-color';
 
 const Outer = styled.div`
@@ -16,7 +15,9 @@ const Outer = styled.div`
 
 const Container = styled.div``;
 
-export const Palette: React.FC = () => {
+export const Palette: React.FC<{
+	color: string;
+}> = ({color}) => {
 	const {width, height, fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 
@@ -35,11 +36,11 @@ export const Palette: React.FC = () => {
 				}}
 			>
 				{[
-					tint(0.4, SELECTED_COLOR),
-					tint(0.2, SELECTED_COLOR),
-					SELECTED_COLOR,
-					shade(0.2, SELECTED_COLOR),
-					shade(0.4, SELECTED_COLOR),
+					tint(0.4, color),
+					tint(0.2, color),
+					color,
+					shade(0.2, color),
+					shade(0.4, color),
 				].map((s, i) => {
 					const progress = spring({
 						frame: frame - i * 4,
@@ -57,7 +58,7 @@ export const Palette: React.FC = () => {
 								opacity: progress,
 								padding: 15,
 								height: progress * 100 + '%',
-								width: '110%',
+								border: `3px solid ${s}`,
 								color: getReadableColor(s),
 							}}
 						/>

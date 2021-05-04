@@ -15,8 +15,7 @@ export const RemotionVideo: React.FC = () => {
 				width={1280}
 				height={720}
 				defaultProps={{
-					titleText: 'Welcome to Remotion',
-					titleColor: 'black',
+					color: '#e74c3c',
 				}}
 			/>
 			<Composition
@@ -27,8 +26,7 @@ export const RemotionVideo: React.FC = () => {
 				width={1280}
 				height={720}
 				defaultProps={{
-					titleText: 'Welcome to Remotion',
-					titleColor: 'black',
+					color: '#e74c3c',
 				}}
 			/>
 			<Composition
@@ -39,8 +37,7 @@ export const RemotionVideo: React.FC = () => {
 				width={1280}
 				height={720}
 				defaultProps={{
-					titleText: 'Welcome to Remotion',
-					titleColor: 'black',
+					color: '#e74c3c',
 				}}
 			/>
 			<Composition
@@ -51,8 +48,8 @@ export const RemotionVideo: React.FC = () => {
 				width={1280}
 				height={720}
 				defaultProps={{
-					titleText: 'Welcome to Remotion',
-					titleColor: 'black',
+					name: 'Jonny',
+					color: '#e74c3c',
 				}}
 			/>
 		</>

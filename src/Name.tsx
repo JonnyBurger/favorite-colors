@@ -7,7 +7,6 @@ import {
 	useVideoConfig,
 } from 'remotion';
 import styled from 'styled-components';
-import {NAME} from './constants';
 
 const Container = styled(AbsoluteFill)`
 	font-family: ---apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
@@ -15,7 +14,9 @@ const Container = styled(AbsoluteFill)`
 	font-weight: bold;
 `;
 
-export const Name: React.FC = () => {
+export const Name: React.FC<{
+	name: string;
+}> = ({name}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 	const progress = spring({
@@ -36,20 +37,34 @@ export const Name: React.FC = () => {
 				backgroundColor: 'white',
 			}}
 		>
-			<span
-				style={{
-					display: 'block',
-					transform: `translateY(${interpolate(
-						progress,
-						[0, 1],
-						[1000, 0]
-					)}px)`,
-					lineHeight: 1.1,
-				}}
-			>
-				Hi {NAME}! <br />
-				Your favorite color is
-			</span>
+			<div>
+				<span
+					style={{
+						display: 'block',
+						transform: `translateY(${interpolate(
+							progress,
+							[0, 1],
+							[1000, 0]
+						)}px)`,
+						lineHeight: 1.1,
+					}}
+				>
+					Hi {name}!
+				</span>
+				<span
+					style={{
+						display: 'block',
+						transform: `translateY(${interpolate(
+							progress,
+							[0, 1],
+							[1000, 0]
+						)}px)`,
+						lineHeight: 1.1,
+					}}
+				>
+					Your favorite color is
+				</span>
+			</div>
 		</Container>
 	);
 };
