@@ -1,19 +1,16 @@
 import {shade, tint} from 'polished';
 import React from 'react';
 import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
-import styled from 'styled-components';
 import {getReadableColor} from '../readable-color';
 
-const Outer = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex: 1;
-	font-family: --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-		Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-`;
-
-const Container = styled.div``;
+const outer: React.CSSProperties = {
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
+	flex: 1,
+	fontFamily:
+		"--apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+};
 
 export const Palette: React.FC<{
 	color: string;
@@ -23,8 +20,8 @@ export const Palette: React.FC<{
 
 	const scale = interpolate(frame, [0, 50, 70], [0.8, 1.8, 10], {});
 	return (
-		<Outer>
-			<Container
+		<div style={outer}>
+			<div
 				style={{
 					flex: 1,
 					flexDirection: 'row',
@@ -64,7 +61,7 @@ export const Palette: React.FC<{
 						/>
 					);
 				})}
-			</Container>
-		</Outer>
+			</div>
+		</div>
 	);
 };

@@ -1,29 +1,29 @@
 import React from 'react';
 import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
-import styled from 'styled-components';
 
-const Container = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-family: --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-		Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	font-weight: bold;
-	font-size: 30px;
-`;
+const container: React.CSSProperties = {
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
+	fontFamily:
+		"--apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+	fontWeight: 'bold',
+	fontSize: 30,
+};
 
-const FACTOR = 1.5;
+const BAR_SCALE_FACTOR = 1.5;
 const TOP_PANEL = 100;
-const Row = styled.div`
-	display: flex;
-	flex-direction: row;
-	align-items: flex-end;
-	height: ${FACTOR * 255 + TOP_PANEL}px;
-`;
 
-const Bar = styled.div`
-	border-radius: 10px;
-`;
+const row: React.CSSProperties = {
+	display: 'flex',
+	flexDirection: 'row',
+	alignItems: 'flex-end',
+	height: BAR_SCALE_FACTOR * 255 + TOP_PANEL,
+};
+
+const bar: React.CSSProperties = {
+	borderRadius: 10,
+};
 
 const rgb = ['#ff7979', '#badc58', '#3498db'];
 
@@ -49,15 +49,16 @@ export const Colors: React.FC<{
 	const barMargin = interpolate(progress, [0, 1], [0, 20]);
 
 	return (
-		<Container
+		<div
 			style={{
+				...container,
 				flex: 1,
 				justifyContent: 'center',
 				alignItems: 'center',
 				backgroundColor: 'white',
 			}}
 		>
-			<Row>
+			<div style={row}>
 				{[r, g, b].map((color, index) => {
 					const barProgress = spring({
 						fps,
@@ -81,13 +82,14 @@ export const Colors: React.FC<{
 									{String(color)}
 								</span>
 							</div>
-							<Bar
+							<div
 								key={index}
 								style={{
+									...bar,
 									width: 250,
 									marginLeft: barMargin,
 									marginRight: barMargin,
-									height: color * FACTOR * barProgress,
+									height: color * BAR_SCALE_FACTOR * barProgress,
 									backgroundColor: rgb[index],
 								}}
 							/>
@@ -110,7 +112,7 @@ export const Colors: React.FC<{
 						</div>
 					);
 				})}
-			</Row>
-		</Container>
+			</div>
+		</div>
 	);
 };

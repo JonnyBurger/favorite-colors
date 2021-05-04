@@ -1,19 +1,7 @@
 import namer from 'color-namer';
 import React from 'react';
 import {spring, useCurrentFrame, useVideoConfig} from 'remotion';
-import styled from 'styled-components';
 import {getReadableColor} from '../readable-color';
-
-const Container = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-family: --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-		Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	font-weight: bold;
-	font-size: 100px;
-	line-height: 1.1;
-`;
 
 export const Shade: React.FC<{
 	color: string;
@@ -29,8 +17,16 @@ export const Shade: React.FC<{
 		},
 	});
 	return (
-		<Container
+		<div
 			style={{
+				display: 'flex',
+				justifyContent: 'center',
+				alignItems: 'center',
+				fontFamily:
+					"--apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+				fontWeight: 'bold',
+				fontSize: 100,
+				lineHeight: 1.1,
 				backgroundColor: getReadableColor(color),
 				flex: 1,
 				color,
@@ -38,14 +34,14 @@ export const Shade: React.FC<{
 		>
 			<div
 				style={{
-					maxWidth: 1000,
+					maxWidth: 1200,
 					textAlign: 'center',
 					transform: `scale(${progress})`,
 				}}
 			>
-				It&apos;s a beautiful <br />
-				shade of {names.roygbiv[0].name}!
+				It&apos;s a beautiful shade of <br />
+				{names.pantone[0].name.toLowerCase()}!
 			</div>
-		</Container>
+		</div>
 	);
 };
