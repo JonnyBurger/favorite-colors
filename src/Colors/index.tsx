@@ -99,7 +99,7 @@ export const Colors: React.FC<{
 										transform: `translateY(${interpolate(
 											barProgress,
 											[0, 1],
-											[30, 0]
+											[70, 0]
 										)}px)`,
 										display: 'block',
 									}}

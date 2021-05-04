@@ -6,14 +6,13 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
-import styled from 'styled-components';
 import {getReadableColor} from './readable-color';
 
-const Container = styled(AbsoluteFill)`
-	font-family: ---apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-		Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	font-weight: bold;
-`;
+const container: React.CSSProperties = {
+	fontFamily:
+		"--apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+	fontWeight: 'bold',
+};
 
 export const Big: React.FC<{
 	color: string;
@@ -28,8 +27,9 @@ export const Big: React.FC<{
 		},
 	});
 	return (
-		<Container
+		<AbsoluteFill
 			style={{
+				...container,
 				display: 'flex',
 				justifyContent: 'center',
 				alignItems: 'center',
@@ -50,6 +50,6 @@ export const Big: React.FC<{
 			>
 				{color}
 			</span>
-		</Container>
+		</AbsoluteFill>
 	);
 };
