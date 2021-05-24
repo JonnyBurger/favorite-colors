@@ -18,7 +18,7 @@ import path from 'path';
 
 const app = express();
 const port = process.env.PORT || 8000;
-const compositionId = 'HelloWorld';
+const compositionId = 'Main';
 
 const cache = new Map<string, string>();
 
@@ -93,7 +93,7 @@ console.log(
 		'',
 		'If you are running Hello World, try this:',
 		'',
-		`http://localhost:${port}?titleText=Hello,+World!&titleColor=red`,
+		`http://localhost:${port}?name=Jonny!&color=red`,
 		'',
 	].join('\n')
 );
